@@ -1,0 +1,168 @@
+/* ============================================================
+   护照主题 · 全局样式
+   墨绿封面 + 牛皮纸内页 + 朱红印章
+   ============================================================ */
+:root {
+  /* 主题色板 */
+  --pp-cover:   #16302a;   /* 护照封面深墨绿（页面底色） */
+  --pp-cover-2: #0f231e;   /* 封面更深处 */
+  --pp-ink:     #1f3d33;   /* 墨绿主文字 */
+  --pp-kraft:   #ece2c9;   /* 牛皮纸内页（卡片） */
+  --pp-kraft-2: #e2d4b3;   /* 牛皮纸暗部 */
+  --pp-line:    #cdbd97;   /* 纸张分隔线 */
+  --pp-muted:   #7a6a45;   /* 次要文字（棕） */
+  --pp-gold:    #b07d28;   /* 烫金/警告 */
+  --pp-vermilion:#bf3b2b;  /* 朱红印章/危险 */
+  --pp-green:   #2c5648;   /* 安全绿 */
+
+  /* 覆盖 antd-mobile 主题变量 */
+  --adm-color-primary: #1f3d33;
+  --adm-color-success: #2c5648;
+  --adm-color-warning: #b07d28;
+  --adm-color-danger:  #bf3b2b;
+  --adm-color-text:    #1f3d33;
+  --adm-font-family: 'Noto Sans SC', -apple-system, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans SC', -apple-system, system-ui, sans-serif;
+  color: var(--pp-ink);
+  /* 护照封面：墨绿 + 极细斜纹皮革纹理 */
+  background-color: var(--pp-cover);
+  background-image:
+    repeating-linear-gradient(115deg, rgba(255,255,255,.02) 0 1px, transparent 1px 6px),
+    repeating-linear-gradient(65deg,  rgba(0,0,0,.06) 0 1px, transparent 1px 6px),
+    radial-gradient(120% 90% at 50% -10%, var(--pp-cover) 0%, var(--pp-cover-2) 100%);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 工具类：等宽证件字 */
+.pp-mono { font-family: 'Space Mono', 'IBM Plex Mono', monospace; }
+.pp-serif { font-family: 'Noto Serif SC', serif; }
+
+/* 让 antd-mobile 弹窗内页也是牛皮纸质感 */
+.adm-popup-body {
+  background-color: var(--pp-kraft) !important;
+  background-image:
+    repeating-linear-gradient(115deg, rgba(31,61,51,.035) 0 1px, transparent 1px 7px),
+    linear-gradient(160deg, #ece2c9, #e2d4b3) !important;
+  color: var(--pp-ink);
+}
+.adm-popup-body h3 {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 900;
+  color: var(--pp-ink);
+  letter-spacing: 1px;
+}
+
+/* 弹窗里的卡片/列表去掉刺眼的纯白，融入牛皮纸 */
+.adm-popup-body .adm-list-body,
+.adm-popup-body .adm-list-item {
+  background: transparent !important;
+}
+.adm-popup-body .adm-list-body {
+  border-top: 1px solid var(--pp-line);
+  border-bottom: 1px solid var(--pp-line);
+}
+.adm-list-item-content {
+  border-color: var(--pp-line) !important;
+}
+
+/* 选择器（国家）配色 */
+.adm-selector .adm-selector-item {
+  background-color: rgba(31,61,51,.06);
+  color: var(--pp-ink);
+  border-radius: 8px;
+}
+.adm-selector .adm-selector-item-active {
+  background-color: var(--pp-ink);
+  color: var(--pp-kraft);
+}
+
+/* 主按钮：墨绿实底 + 圆角 */
+.adm-button-primary {
+  --background-color: var(--pp-ink);
+  --border-color: var(--pp-ink);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* NavBar 文字色（在墨绿底上用牛皮纸色） */
+.adm-nav-bar {
+  --adm-color-text: var(--pp-kraft);
+}
+
+/* Toast 提示也走墨绿 */
+.adm-toast-main {
+  background-color: rgba(22,48,42,.92) !important;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+/* ============ 展开后的行程列表：仿护照登记行 ============ */
+.trip-list,
+.trip-list .adm-list-body,
+.trip-list .adm-list-body-inner,
+.trip-list .adm-list-item {
+  background-color: var(--pp-kraft-2) !important;
+}
+.trip-list .adm-list-body {
+  border: 1px solid var(--pp-line);
+  border-radius: 12px;
+}
+.trip-list .adm-list-item-content {
+  border-top: 1px dashed rgba(31,61,51,.28) !important;
+}
+.trip-list .adm-list-item:first-child .adm-list-item-content {
+  border-top: none !important;
+}
+.trip-list .adm-list-item-content-main {
+  color: var(--pp-ink);
+  font-weight: 600;
+}
+.trip-list .adm-list-item-description {
+  color: var(--pp-muted) !important;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.5px;
+}
+.trip-seq {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 15px;
+  color: var(--pp-ink);
+  opacity: 0.45;
+  width: 26px;
+  display: inline-block;
+}
+
+/* ============ 底部免责声明 ============ */
+.pp-disclaimer {
+  max-width: 520px;
+  margin: 28px auto 0;
+  padding: 0 22px;
+  text-align: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  line-height: 1.7;
+  letter-spacing: 0.3px;
+  color: rgba(236, 226, 201, 0.55);
+}
+.pp-disclaimer::before {
+  content: '— 免责声明 —';
+  display: block;
+  margin-bottom: 6px;
+  letter-spacing: 3px;
+  color: rgba(236, 226, 201, 0.4);
+}
+/* 弹窗内的小号免责声明 */
+.pp-disclaimer-mini {
+  margin: 14px 0 2px;
+  text-align: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  line-height: 1.6;
+  color: var(--pp-muted);
+}

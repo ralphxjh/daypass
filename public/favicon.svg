@@ -1,0 +1,33 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 牛皮纸背景 -->
+  <rect width="512" height="512" rx="64" fill="#ece2c9"/>
+  <!-- 纹理线 -->
+  <g opacity="0.12">
+    <line x1="0" y1="32" x2="512" y2="32" stroke="#1f3d33" stroke-width="1"/>
+    <line x1="0" y1="64" x2="512" y2="64" stroke="#1f3d33" stroke-width="1"/>
+    <line x1="0" y1="96" x2="512" y2="96" stroke="#1f3d33" stroke-width="1"/>
+    <line x1="0" y1="128" x2="512" y2="128" stroke="#1f3d33" stroke-width="1"/>
+    <line x1="0" y1="160" x2="512" y2="160" stroke="#1f3d33" stroke-width="1"/>
+    <line x1="0" y1="192" x2="512" y2="192" stroke="#1f3d33" stroke-width="1"/>
+    <line x1="0" y1="224" x2="512" y2="224" stroke="#1f3d33" stroke-width="1"/>
+    <line x1="0" y1="256" x2="512" y2="256" stroke="#1f3d33" stroke-width="1"/>
+    <line x1="0" y1="288" x2="512" y2="288" stroke="#1f3d33" stroke-width="1"/>
+    <line x1="0" y1="320" x2="512" y2="320" stroke="#1f3d33" stroke-width="1"/>
+    <line x1="0" y1="352" x2="512" y2="352" stroke="#1f3d33" stroke-width="1"/>
+    <line x1="0" y1="384" x2="512" y2="384" stroke="#1f3d33" stroke-width="1"/>
+    <line x1="0" y1="416" x2="512" y2="416" stroke="#1f3d33" stroke-width="1"/>
+    <line x1="0" y1="448" x2="512" y2="448" stroke="#1f3d33" stroke-width="1"/>
+    <line x1="0" y1="480" x2="512" y2="480" stroke="#1f3d33" stroke-width="1"/>
+  </g>
+  <!-- 入境章主体（歪斜） -->
+  <g transform="rotate(-12 256 256)">
+    <!-- 外圈 -->
+    <ellipse cx="256" cy="256" rx="165" ry="180" fill="none" stroke="#bf3b2b" stroke-width="14"/>
+    <!-- 内圈虚线 -->
+    <ellipse cx="256" cy="256" rx="133" ry="145" fill="none" stroke="#bf3b2b" stroke-width="5" stroke-dasharray="22 11"/>
+    <!-- 文字 DAY -->
+    <text x="256" y="230" text-anchor="middle" fill="#bf3b2b" font-family="Arial Black, Arial, sans-serif" font-size="102" font-weight="900" letter-spacing="8">DAY</text>
+    <!-- 文字 PASS -->
+    <text x="256" y="320" text-anchor="middle" fill="#bf3b2b" font-family="Arial Black, Arial, sans-serif" font-size="86" font-weight="900" letter-spacing="6">PASS</text>
+  </g>
+</svg>

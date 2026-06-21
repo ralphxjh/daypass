@@ -1,0 +1,151 @@
+/* ============ 护照内页卡片 ============ */
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  padding: 22px 22px 14px;
+  color: var(--pp-ink);
+  border: 1px solid var(--pp-line);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+  background-color: var(--pp-kraft);
+  background-image:
+    repeating-linear-gradient(115deg, rgba(31, 61, 51, 0.045) 0 1px, transparent 1px 7px),
+    radial-gradient(circle at 82% 16%, rgba(191, 59, 43, 0.05), transparent 46%),
+    linear-gradient(160deg, #ece2c9, #e2d4b3);
+}
+
+/* 护照内页的双线边框 */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(31, 61, 51, 0.22);
+  border-radius: 9px;
+  pointer-events: none;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--pp-muted);
+}
+
+.countryName {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 1.05;
+  margin: 6px 0 0;
+  color: var(--pp-ink);
+}
+
+/* 入境章：歪斜、描边、半透明，颜色随状态变化 */
+.stamp {
+  flex-shrink: 0;
+  transform: rotate(-9deg);
+  border: 2.5px solid currentColor;
+  border-radius: 7px;
+  padding: 5px 9px 4px;
+  text-align: center;
+  opacity: 0.88;
+}
+.stampText {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: block;
+  white-space: nowrap;
+}
+.stampSub {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+}
+
+.figs {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  margin: 16px 0 6px;
+}
+.days {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 52px;
+  line-height: 0.85;
+}
+.of {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: var(--pp-muted);
+}
+
+/* 进度：墨水斜纹填充条 */
+.bar {
+  height: 9px;
+  border-radius: 5px;
+  background: rgba(31, 61, 51, 0.12);
+  border: 1px solid rgba(31, 61, 51, 0.18);
+  overflow: hidden;
+  margin: 4px 0;
+}
+.barFill {
+  display: block;
+  height: 100%;
+  transition: width 0.6s ease;
+}
+
+.note {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  color: var(--pp-muted);
+  margin: 6px 0 0;
+}
+
+/* 底部机读码行 + 展开提示 */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+  border-top: 1px dashed rgba(31, 61, 51, 0.35);
+  padding-top: 9px;
+}
+.mrz {
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 1.2px;
+  color: #5e5236;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+}
+.expand {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--pp-muted);
+}
+.arrow {
+  transition: transform 0.3s ease;
+}
+.arrowOpen {
+  transform: rotate(90deg);
+}
