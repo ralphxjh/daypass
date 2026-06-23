@@ -96,6 +96,17 @@ html, body {
   --adm-color-text: var(--pp-kraft);
 }
 
+/* 导航栏语言选择器下拉选项 */
+.nav-lang-select option {
+  background: var(--pp-cover);
+  color: var(--pp-kraft);
+}
+
+/* 防止 iOS 聚焦输入框时自动缩放（font-size < 16px 会触发） */
+input, textarea {
+  font-size: 16px !important;
+}
+
 /* Toast 提示也走墨绿 */
 .adm-toast-main {
   background-color: rgba(22,48,42,.92) !important;
@@ -150,13 +161,24 @@ html, body {
   letter-spacing: 0.3px;
   color: rgba(236, 226, 201, 0.55);
 }
-.pp-disclaimer::before {
-  content: '— 免责声明 —';
+.pp-disclaimer-label {
   display: block;
   margin-bottom: 6px;
   letter-spacing: 3px;
   color: rgba(236, 226, 201, 0.4);
 }
+/* ============ DatePicker 惯性滚动优化 ============ */
+/* antd-mobile 5.x 的 picker 滚动列 */
+.adm-picker-view-column-wheel {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+}
+/* 列容器防止页面级滚动干扰 */
+.adm-picker-view-column {
+  touch-action: pan-y;
+}
+
 /* 弹窗内的小号免责声明 */
 .pp-disclaimer-mini {
   margin: 14px 0 2px;

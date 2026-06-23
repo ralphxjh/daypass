@@ -1,8 +1,10 @@
 import React from 'react';
 import { RightOutline } from 'antd-mobile-icons';
+import { useLanguage } from '../i18n/LanguageContext';
 import styles from './TaxStatusCard.module.css';
 
 const TaxStatusCard = ({ country, isExpanded, tripCount }) => {
+  const { t } = useLanguage();
   const { id, name, flag, currentDays, thresholdDays } = country;
 
   const percentage = Math.min((currentDays / thresholdDays) * 100, 100);
@@ -12,17 +14,17 @@ const TaxStatusCard = ({ country, isExpanded, tripCount }) => {
   const stampColor = 'var(--pp-vermilion)';
   // 数字和进度条保持墨绿
   const dataColor = 'var(--pp-ink)';
-  let statusText = 'SAFE 安全';
+  let statusText = t('statusText.safe');
   if (percentage >= 90) {
-    statusText = 'ALERT 危险';
+    statusText = t('statusText.alert');
   } else if (percentage >= 60) {
-    statusText = 'WATCH 警告';
+    statusText = t('statusText.watch');
   }
 
   const noteText =
     remaining > 0
-      ? `还可停留 ${remaining} 天 · 超过即触发税务居民判定`
-      : `已超出 ${currentDays - thresholdDays} 天 · 已达税务居民判定线`;
+      ? t('taxStatusCard.canStay', { remaining })
+      : t('taxStatusCard.exceeded', { days: currentDays - thresholdDays });
 
   // 仿护照机读码（MRZ）行
   const code = String(id || 'XXX').replace(/[^A-Za-z0-9]/g, '').toUpperCase().slice(0, 6) || 'XXX';
@@ -33,7 +35,7 @@ const TaxStatusCard = ({ country, isExpanded, tripCount }) => {
     <div className={styles.card}>
       <div className={styles.top}>
         <div>
-          <div className={styles.label}>PASSPORT · 税务居住记录</div>
+          <div className={styles.label}>{t('taxStatusCard.passportLabel')}</div>
           <h3 className={styles.countryName}>{flag} {name}</h3>
         </div>
         <div className={styles.stamp} style={{ color: stampColor }}>
@@ -44,7 +46,7 @@ const TaxStatusCard = ({ country, isExpanded, tripCount }) => {
 
       <div className={styles.figs}>
         <div className={styles.days} style={{ color: dataColor }}>{currentDays}</div>
-        <div className={styles.of}>/ {thresholdDays} 天阈值</div>
+        <div className={styles.of}>/ {thresholdDays} {t('taxStatusCard.dayThreshold')}</div>
       </div>
 
       <div className={styles.bar}>
@@ -62,7 +64,7 @@ const TaxStatusCard = ({ country, isExpanded, tripCount }) => {
       <div className={styles.footer}>
         <div className={styles.mrz}>{mrz}</div>
         <div className={styles.expand}>
-          {tripCount > 0 ? `${tripCount} 条记录` : '无记录'}
+          {tripCount > 0 ? t('taxStatusCard.records', { count: tripCount }) : t('taxStatusCard.noRecords')}
           <RightOutline className={`${styles.arrow} ${isExpanded ? styles.arrowOpen : ''}`} />
         </div>
       </div>
